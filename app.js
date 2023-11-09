@@ -10,6 +10,7 @@ const respuesta3 = document.getElementById("respuesta3");
 const indiceRespuestaCorrecta = document.getElementById("indiceRespuestaCorrecta");
 const respuestas_span = [respuesta1, respuesta2, respuesta3];
 const nivel = document.getElementById("nivel");
+let cantPreguntas;
 document.getElementById("logo").style.display = 'block';
 
 document.getElementById("prevQuestion").addEventListener('click', function(){
