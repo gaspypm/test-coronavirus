@@ -55,8 +55,8 @@ document.getElementById("prevQuestion").addEventListener('click', function(){
     main(); // Update the question content
   }
   if (currentQuestion - 1 == 0) {
-    localStorage.setItem("numPregunta", cantPreguntas - 1);
-    numeroPregunta.innerHTML = "Question " + (cantPreguntas - 1).toString();
+    localStorage.setItem("numPregunta", cantPreguntas);
+    numeroPregunta.innerHTML = "Question " + (cantPreguntas).toString();
     main(); // Update the question content
   }
 });
