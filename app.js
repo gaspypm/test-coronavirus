@@ -170,7 +170,7 @@ async function main(){
   }
 
   let preguntaAleatoria = aleatorizarPreguntas(cantPreguntas);
-  let indiceAleatorio = indicesRespuestas[preguntaAleatoria];
+  let indiceAleatorio = indicesRespuestas[0];
 
   indiceRespuestaCorrecta.innerHTML = indiceAleatorio;
   numeroPregunta.innerHTML = "Question " + (preguntaAleatoria+1).toString();
