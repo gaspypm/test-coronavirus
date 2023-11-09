@@ -15,7 +15,7 @@ document.getElementById("logo").style.display = 'block';
 
 document.getElementById("prevQuestion").addEventListener('click', function(){
   let currentQuestion = parseInt(localStorage.getItem("numPregunta"));
-  if (currentQuestion > 1) {
+  if (currentQuestion > 0) {
     localStorage.setItem("numPregunta", currentQuestion - 1);
     numeroPregunta.innerHTML = "Question " + (currentQuestion - 1).toString();
     main(); // Update the question content
