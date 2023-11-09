@@ -187,6 +187,7 @@ function populateQuestionDropdown(cantPreguntas) {
     const option = document.createElement("option");
     option.text = "Question " + i;
     option.value = i;
+    selectQuestion.innerHTML = '';
     selectQuestion.add(option);
   }
 
