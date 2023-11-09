@@ -53,11 +53,13 @@ document.getElementById("prevQuestion").addEventListener('click', function(){
   if (currentQuestion > 1) {
     localStorage.setItem("numPregunta", currentQuestion - 1);
     numeroPregunta.innerHTML = "Question " + (currentQuestion - 1).toString();
+    selectQuestion.value = (currentQuestion - 1).toString();
     main();
   }
   else if (currentQuestion - 1 == 0) {
     localStorage.setItem("numPregunta", cantPreguntas);
     numeroPregunta.innerHTML = "Question " + (cantPreguntas).toString();
+    selectQuestion.value = (cantPreguntas).toString();
     main();
   }
 });
@@ -67,11 +69,13 @@ document.getElementById("nextQuestion").addEventListener('click', function(){
   if (currentQuestion < cantPreguntas) {
     localStorage.setItem("numPregunta", currentQuestion + 1);
     numeroPregunta.innerHTML = "Question " + (currentQuestion + 1).toString();
+    selectQuestion.value = (currentQuestion + 1).toString();
     main();
   }
   else if (currentQuestion == cantPreguntas) {
     localStorage.setItem("numPregunta",  1);
     numeroPregunta.innerHTML = "Question 1";
+    selectQuestion.value = 1;
     main();
   }
 });
