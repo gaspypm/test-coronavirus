@@ -10,6 +10,7 @@ const respuesta3 = document.getElementById("respuesta3");
 const indiceRespuestaCorrecta = document.getElementById("indiceRespuestaCorrecta");
 const respuestas_span = [respuesta1, respuesta2, respuesta3];
 const nivel = document.getElementById("nivel");
+const selectQuestion = document.getElementById("selectQuestion");
 localStorage.setItem("numPregunta", 1);
 const id = localStorage.getItem("id");
 let cantPreguntas;
@@ -178,7 +179,6 @@ function mostrarOpciones(respuesta1, respuesta2, respuesta3){
 }
 
 function populateQuestionDropdown(cantPreguntas) {
-  const selectQuestion = document.getElementById("selectQuestion");
   for (let i = 1; i <= cantPreguntas; i++) {
     const option = document.createElement("option");
     option.text = "Question " + i;
@@ -187,7 +187,8 @@ function populateQuestionDropdown(cantPreguntas) {
   }
 
   selectQuestion.addEventListener("change", function() {
-    const selectedQuestion = this.value;
+    const selectedQuestion = localStorage.getItem("numPregunta");
+    selectQuestion.value = selectedQuestion;
     localStorage.setItem("numPregunta", selectedQuestion);
     numeroPregunta.innerHTML = "Question " + selectedQuestion;
     main();
