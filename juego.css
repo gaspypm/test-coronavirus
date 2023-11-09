@@ -48,6 +48,19 @@ body {
   text-shadow: 0px 0px 14px #00000040;
 }
 
+#prevQuestion, #nextQuestion {
+  text-align: left;
+  width: auto;
+  color: white;
+  font-family: Asap, sans-serif;
+  transition: hover 0.3s ease;
+  transition: background 1s;
+  padding: 2px;
+  border: 3px solid white;
+  border-radius: 2px;
+  text-shadow: 0px 0px 14px #00000040;
+}
+
 #nivel {
   margin: 2%;
   margin-top: 0;
@@ -144,6 +157,7 @@ img {
         padding-bottom: 200px;
     }
 }
+
 
 .logo_fuente {
   display: flex;
