@@ -49,7 +49,7 @@ document.getElementById("logo").style.display = 'block';
 
 document.getElementById("prevQuestion").addEventListener('click', function(){
   let currentQuestion = parseInt(localStorage.getItem("numPregunta"));
-  if (currentQuestion > 0) {
+  if (currentQuestion > 1) {
     localStorage.setItem("numPregunta", currentQuestion - 1);
     numeroPregunta.innerHTML = "Question " + (currentQuestion - 1).toString();
     main(); // Update the question content
@@ -62,6 +62,10 @@ document.getElementById("nextQuestion").addEventListener('click', function(){
     localStorage.setItem("numPregunta", currentQuestion + 1);
     numeroPregunta.innerHTML = "Question " + (currentQuestion + 1).toString();
     main(); // Update the question content
+  }
+  else {
+    localStorage.setItem("numPregunta", 1);
+    numeroPregunta.innerHTML = "Question 1";
   }
 });
 
