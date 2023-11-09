@@ -13,22 +13,12 @@ const nivel = document.getElementById("nivel");
 document.getElementById("logo").style.display = 'block';
 
 document.getElementById("prevQuestion").addEventListener('click', function(){
-  let currentQuestion = parseInt(localStorage.getItem("numPregunta"));
-  if (currentQuestion > 1) {
-    localStorage.setItem("numPregunta", currentQuestion - 1);
-    window.location.reload();
-  }
+  localStorage.setItem("numPregunta", parseInt(localStorage.getItem("numPregunta")) - 1);
 });
 
 document.getElementById("nextQuestion").addEventListener('click', function(){
-  let currentQuestion = parseInt(localStorage.getItem("numPregunta"));
-  let totalQuestions = 29;
-  if (currentQuestion < totalQuestions) {
-    localStorage.setItem("numPregunta", currentQuestion + 1);
-    window.location.reload();
-  }
+  localStorage.setItem("numPregunta", parseInt(localStorage.getItem("numPregunta")) + 1);
 });
-
 
 async function obtenerArchivo(id){
   const archivo = await fetch("/questions/" + id.toString() + ".csv"); // Recibo el archivo con las preguntas y respuestas
@@ -133,7 +123,7 @@ function mostrarOpciones(respuesta1, respuesta2, respuesta3){
 
 async function main(){
   const id = localStorage.getItem("id");
-  let numPregunta = parseInt(localStorage.getItem("numPregunta")); // Parse as integer
+  let numPregunta;
   let cantPreguntas;
   const categoria = (id).slice(0, -3);
 
@@ -177,11 +167,8 @@ async function main(){
     indicesRespuestas[i] = i*3;
   }
 
-
-    if (numPregunta >= 1 && numPregunta <= cantPreguntas) { // Check if it's a valid question number
-      preguntaAleatoria = numPregunta - 1; // Adjust for array index
-      let indiceAleatorio = indicesRespuestas[preguntaAleatoria];
-    }
+  let preguntaAleatoria = aleatorizarPreguntas(cantPreguntas);
+  let indiceAleatorio = indicesRespuestas[preguntaAleatoria];
 
   indiceRespuestaCorrecta.innerHTML = indiceAleatorio;
   numeroPregunta.innerHTML = "Question " + (preguntaAleatoria+1).toString();
@@ -193,7 +180,6 @@ async function main(){
 
   preguntas = obtenerPreguntas(await obtenerArchivo(id));
   respuestas = obtenerRespuestas(await obtenerArchivo(id));
-  
 
   pregunta.innerHTML = preguntas[preguntaAleatoria];
 
@@ -210,7 +196,6 @@ async function main(){
     }
     j++;
   }
-  
 
   opciones = aleatorizarRespuestas(opciones);
 
@@ -246,7 +231,5 @@ async function main(){
 }
 
 document.addEventListener("DOMContentLoaded", function(event){
-  if (localStorage.getItem("numPregunta")) {
-    main();
-  }
+  main();
 });
