@@ -12,6 +12,16 @@ const respuestas_span = [respuesta1, respuesta2, respuesta3];
 const nivel = document.getElementById("nivel");
 document.getElementById("logo").style.display = 'block';
 
+document.getElementById("prevQuestion").addEventListener('click', function(){
+  localStorage.setItem("numPregunta", parseInt(localStorage.getItem("numPregunta")) - 1);
+  window.location.reload();
+});
+
+document.getElementById("nextQuestion").addEventListener('click', function(){
+  localStorage.setItem("numPregunta", parseInt(localStorage.getItem("numPregunta")) + 1);
+  window.location.reload();
+});
+
 async function obtenerArchivo(id){
   const archivo = await fetch("/questions/" + id.toString() + ".csv"); // Recibo el archivo con las preguntas y respuestas
   const datos = await archivo.text(); // Convierto el archivo a texto
