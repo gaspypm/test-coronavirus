@@ -13,14 +13,23 @@ const nivel = document.getElementById("nivel");
 document.getElementById("logo").style.display = 'block';
 
 document.getElementById("prevQuestion").addEventListener('click', function(){
-  localStorage.setItem("numPregunta", parseInt(localStorage.getItem("numPregunta")) - 1);
-  window.location.reload();
+  let currentQuestion = parseInt(localStorage.getItem("numPregunta"));
+  if (currentQuestion > 1) {
+    localStorage.setItem("numPregunta", currentQuestion - 1);
+    numeroPregunta.innerHTML = "Question " + (currentQuestion - 1).toString();
+    main(); // Update the question content
+  }
 });
 
 document.getElementById("nextQuestion").addEventListener('click', function(){
-  localStorage.setItem("numPregunta", parseInt(localStorage.getItem("numPregunta")) + 1);
-  window.location.reload();
+  let currentQuestion = parseInt(localStorage.getItem("numPregunta"));
+  if (currentQuestion < cantPreguntas) {
+    localStorage.setItem("numPregunta", currentQuestion + 1);
+    numeroPregunta.innerHTML = "Question " + (currentQuestion + 1).toString();
+    main(); // Update the question content
+  }
 });
+
 
 async function obtenerArchivo(id){
   const archivo = await fetch("/questions/" + id.toString() + ".csv"); // Recibo el archivo con las preguntas y respuestas
