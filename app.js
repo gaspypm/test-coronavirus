@@ -22,7 +22,7 @@ document.getElementById("prevQuestion").addEventListener('click', function(){
 
 document.getElementById("nextQuestion").addEventListener('click', function(){
   let currentQuestion = parseInt(localStorage.getItem("numPregunta"));
-  let totalQuestions = /* total number of questions */;
+  let totalQuestions = 29;
   if (currentQuestion < totalQuestions) {
     localStorage.setItem("numPregunta", currentQuestion + 1);
     window.location.reload();
