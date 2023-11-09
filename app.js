@@ -13,14 +13,22 @@ const nivel = document.getElementById("nivel");
 document.getElementById("logo").style.display = 'block';
 
 document.getElementById("prevQuestion").addEventListener('click', function(){
-  localStorage.setItem("numPregunta", parseInt(localStorage.getItem("numPregunta")) - 1);
-  window.location.reload();
+  let currentQuestion = parseInt(localStorage.getItem("numPregunta"));
+  if (currentQuestion > 1) {
+    localStorage.setItem("numPregunta", currentQuestion - 1);
+    window.location.reload();
+  }
 });
 
 document.getElementById("nextQuestion").addEventListener('click', function(){
-  localStorage.setItem("numPregunta", parseInt(localStorage.getItem("numPregunta")) + 1);
-  window.location.reload();
+  let currentQuestion = parseInt(localStorage.getItem("numPregunta"));
+  let totalQuestions = /* total number of questions */;
+  if (currentQuestion < totalQuestions) {
+    localStorage.setItem("numPregunta", currentQuestion + 1);
+    window.location.reload();
+  }
 });
+
 
 async function obtenerArchivo(id){
   const archivo = await fetch("/questions/" + id.toString() + ".csv"); // Recibo el archivo con las preguntas y respuestas
@@ -78,17 +86,6 @@ function aleatorizarRespuestas(opciones){
   }
 
   return opciones;
-}
-
-function aleatorizarRespuestas2(cantRespuestas){
-  for (let i = cantRespuestas; i < 105; i++){
-    indicesRespuestas[preguntaAleatoria];
-  }
-  if(indiceRespuesta == cantRespuestas){
-    correcta = true;
-  }
-
-  return Math.floor(Math.random() * 30); // Cantidad de preguntas
 }
 
 function verificarCorrecta(opcion, correcta, respuesta1, respuesta2, respuesta3){
