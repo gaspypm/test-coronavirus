@@ -14,10 +14,12 @@ document.getElementById("logo").style.display = 'block';
 
 document.getElementById("prevQuestion").addEventListener('click', function(){
   localStorage.setItem("numPregunta", parseInt(localStorage.getItem("numPregunta")) - 1);
+  window.location.reload();
 });
 
 document.getElementById("nextQuestion").addEventListener('click', function(){
   localStorage.setItem("numPregunta", parseInt(localStorage.getItem("numPregunta")) + 1);
+  window.location.reload();
 });
 
 async function obtenerArchivo(id){
@@ -59,7 +61,7 @@ function obtenerRespuestas(tabla){
 }
 
 function aleatorizarPreguntas(cantPreguntas){
-  return Math.floor(Math.random() * cantPreguntas);
+  return 0;
 }
 
 function aleatorizarRespuestas(opciones){
