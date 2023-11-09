@@ -52,12 +52,12 @@ document.getElementById("prevQuestion").addEventListener('click', function(){
   if (currentQuestion > 1) {
     localStorage.setItem("numPregunta", currentQuestion - 1);
     numeroPregunta.innerHTML = "Question " + (currentQuestion - 1).toString();
-    main(); // Update the question content
+    main();
   }
   else if (currentQuestion - 1 == 0) {
     localStorage.setItem("numPregunta", cantPreguntas);
     numeroPregunta.innerHTML = "Question " + (cantPreguntas).toString();
-    main(); // Update the question content
+    main();
   }
 });
 
@@ -66,12 +66,12 @@ document.getElementById("nextQuestion").addEventListener('click', function(){
   if (currentQuestion < cantPreguntas) {
     localStorage.setItem("numPregunta", currentQuestion + 1);
     numeroPregunta.innerHTML = "Question " + (currentQuestion + 1).toString();
-    main(); // Update the question content
+    main();
   }
   else if (currentQuestion == cantPreguntas) {
     localStorage.setItem("numPregunta",  1);
     numeroPregunta.innerHTML = "Question 1";
-    main(); // Update the question content
+    main();
   }
 });
 
@@ -177,6 +177,23 @@ function mostrarOpciones(respuesta1, respuesta2, respuesta3){
   }
 }
 
+function populateQuestionDropdown(cantPreguntas) {
+  const selectQuestion = document.getElementById("selectQuestion");
+  for (let i = 1; i <= cantPreguntas; i++) {
+    const option = document.createElement("option");
+    option.text = "Question " + i;
+    option.value = i;
+    selectQuestion.add(option);
+  }
+
+  selectQuestion.addEventListener("change", function() {
+    const selectedQuestion = this.value;
+    localStorage.setItem("numPregunta", selectedQuestion);
+    numeroPregunta.innerHTML = "Question " + selectedQuestion;
+    main();
+  });
+}
+
 async function main(){
   const id = localStorage.getItem("id");
   let numPregunta;
@@ -222,6 +239,8 @@ async function main(){
   for(let i = 0; i < cantPreguntas; i++){
     indicesRespuestas[i] = i*3;
   }
+
+  populateQuestionDropdown(cantPreguntas);
 
   let preguntaAleatoria = localStorage.getItem("numPregunta") - 1;
   let indiceAleatorio = indicesRespuestas[0];
