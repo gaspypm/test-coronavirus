@@ -61,6 +61,7 @@ body {
   font-weight: bold;
   padding: 5px;
   text-shadow: 0px 0px 14px #00000040;
+  background-color: #2f308b;
 }
 
 #prevQuestion, #nextQuestion {
