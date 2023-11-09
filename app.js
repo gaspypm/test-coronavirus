@@ -97,7 +97,7 @@ function verificarCorrecta(opcion, correcta, respuesta1, respuesta2, respuesta3)
     console.log("The answer is correct.");
   }
 
-  setTimeout(function(){ // Despues de 1 segundo de elegir muestro si las otras opciones son correctas o no
+  setTimeout(function(){ // Después de 1 segundo de elegir muestro si las otras opciones son correctas o no
     mostrarOpciones(respuesta1, respuesta2, respuesta3);
     document.getElementById("fuente").style.display = 'block';
     document.getElementById("fuente").style.opacity = '1';
@@ -172,6 +172,7 @@ async function main(){
   let indiceAleatorio = indicesRespuestas[preguntaAleatoria];
 
   indiceRespuestaCorrecta.innerHTML = indiceAleatorio;
+  numeroPregunta.innerHTML = "Question " + (preguntaAleatoria+1).toString();
   console.log("Question number:", preguntaAleatoria+1);
   respuestas_span[0].style.display = 'none';
   respuestas_span[1].style.display = 'none';
