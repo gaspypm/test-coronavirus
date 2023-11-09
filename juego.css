@@ -53,6 +53,16 @@ body {
   text-shadow: 0px 0px 14px #00000040;
 }
 
+#selectQuestion {
+  width: auto;
+  color: white;
+  font-size: 200%;
+  font-family: Asap, sans-serif;
+  font-weight: bold;
+  padding: 5px;
+  text-shadow: 0px 0px 14px #00000040;
+}
+
 #prevQuestion, #nextQuestion {
   margin: 2px;
   width: 50px;

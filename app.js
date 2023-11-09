@@ -178,7 +178,7 @@ function mostrarOpciones(respuesta1, respuesta2, respuesta3){
 }
 
 function populateQuestionDropdown(cantPreguntas) {
-  const selectQuestion = document.getElementById("numeroPregunta");
+  const selectQuestion = document.getElementById("selectQuestion");
   for (let i = 1; i <= cantPreguntas; i++) {
     const option = document.createElement("option");
     option.text = "Question " + i;
