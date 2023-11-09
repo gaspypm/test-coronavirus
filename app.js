@@ -10,7 +10,47 @@ const respuesta3 = document.getElementById("respuesta3");
 const indiceRespuestaCorrecta = document.getElementById("indiceRespuestaCorrecta");
 const respuestas_span = [respuesta1, respuesta2, respuesta3];
 const nivel = document.getElementById("nivel");
+
+const id = localStorage.getItem("id");
+let numPregunta;
 let cantPreguntas;
+const categoria = (id).slice(0, -3);
+
+console.log("ID:", id);
+let preguntas = [];
+let respuestas = [];
+let opciones = [];
+let indicesRespuestas = [];
+let j = 0;
+
+switch (categoria){
+  case "home":
+    cantPreguntas = 33;
+    break;
+  case "pharmacy":
+    cantPreguntas = 29;
+    break;
+  case "hospital":
+    cantPreguntas = 34;
+    break;
+  case "supermarket":
+    cantPreguntas = 34;
+    break;
+  case "school":
+    cantPreguntas = 34;
+    break;
+  case "bank":
+    cantPreguntas = 30;
+    break;
+  case "lab":
+    cantPreguntas = 34;
+    break;
+  case "zoo":
+    cantPreguntas = 29;
+    break;
+  default:
+    alert("There was an error, try selecting the category again.")
+}
 document.getElementById("logo").style.display = 'block';
 
 document.getElementById("prevQuestion").addEventListener('click', function(){
