@@ -2,13 +2,13 @@ let correcta = false;
 let seleccionada = false;
 let dificultades = [];
 const body = document.getElementById("body");
+const numeroPregunta = document.getElementById("numeroPregunta");
 const pregunta = document.getElementById("pregunta");
 const respuesta1 = document.getElementById("respuesta1");
 const respuesta2 = document.getElementById("respuesta2");
 const respuesta3 = document.getElementById("respuesta3");
 const indiceRespuestaCorrecta = document.getElementById("indiceRespuestaCorrecta");
 const respuestas_span = [respuesta1, respuesta2, respuesta3];
-const dificultad = document.getElementById("dificultad");
 const nivel = document.getElementById("nivel");
 document.getElementById("logo").style.display = 'block';
 
