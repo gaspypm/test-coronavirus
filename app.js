@@ -133,7 +133,7 @@ function mostrarOpciones(respuesta1, respuesta2, respuesta3){
 
 async function main(){
   const id = localStorage.getItem("id");
-  let numPregunta;
+  let numPregunta = parseInt(localStorage.getItem("numPregunta")); // Parse as integer
   let cantPreguntas;
   const categoria = (id).slice(0, -3);
 
@@ -177,8 +177,11 @@ async function main(){
     indicesRespuestas[i] = i*3;
   }
 
-  let preguntaAleatoria = aleatorizarPreguntas(cantPreguntas);
-  let indiceAleatorio = indicesRespuestas[preguntaAleatoria];
+
+    if (numPregunta >= 1 && numPregunta <= cantPreguntas) { // Check if it's a valid question number
+      preguntaAleatoria = numPregunta - 1; // Adjust for array index
+      let indiceAleatorio = indicesRespuestas[preguntaAleatoria];
+    }
 
   indiceRespuestaCorrecta.innerHTML = indiceAleatorio;
   numeroPregunta.innerHTML = "Question " + (preguntaAleatoria+1).toString();
@@ -190,6 +193,7 @@ async function main(){
 
   preguntas = obtenerPreguntas(await obtenerArchivo(id));
   respuestas = obtenerRespuestas(await obtenerArchivo(id));
+  
 
   pregunta.innerHTML = preguntas[preguntaAleatoria];
 
@@ -206,6 +210,7 @@ async function main(){
     }
     j++;
   }
+  
 
   opciones = aleatorizarRespuestas(opciones);
 
@@ -241,5 +246,7 @@ async function main(){
 }
 
 document.addEventListener("DOMContentLoaded", function(event){
-  main();
+  if (localStorage.getItem("numPregunta")) {
+    main();
+  }
 });
