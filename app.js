@@ -175,7 +175,7 @@ async function main(){
 
   indiceRespuestaCorrecta.innerHTML = indiceAleatorio;
   numeroPregunta.innerHTML = "Question " + (preguntaAleatoria+1).toString();
-  numPregunta = localStorage.setItem("numPregunta");
+  localStorage.setItem("numPregunta", preguntaAleatoria+1);
   console.log("Question number:", preguntaAleatoria+1);
   respuestas_span[0].style.display = 'none';
   respuestas_span[1].style.display = 'none';
