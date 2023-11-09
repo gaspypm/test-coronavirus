@@ -54,6 +54,10 @@ document.getElementById("prevQuestion").addEventListener('click', function(){
     numeroPregunta.innerHTML = "Question " + (currentQuestion - 1).toString();
     main(); // Update the question content
   }
+  else {
+    localStorage.setItem("numPregunta", cantPreguntas);
+    numeroPregunta.innerHTML = "Question 1";
+  }
 });
 
 document.getElementById("nextQuestion").addEventListener('click', function(){
