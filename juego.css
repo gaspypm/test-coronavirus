@@ -37,8 +37,11 @@ body {
   display: none;
 }
 
-#numeroPregunta {
+#questionControl {
   text-align: left;
+}
+
+#numeroPregunta {
   width: auto;
   color: white;
   font-size: 200%;
@@ -49,7 +52,6 @@ body {
 }
 
 #prevQuestion, #nextQuestion {
-  text-align: left;
   margin: 2px;
   width: 50px;
   color: white;
