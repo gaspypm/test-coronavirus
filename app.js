@@ -139,13 +139,13 @@ function verificarCorrecta(opcion, correcta, respuesta1, respuesta2, respuesta3)
     return;
   }
   if(opcion.innerHTML != correcta){
-    document.body.setAttribute('style', 'background-color: #F63E52');
+    document.body.setAttribute('style', 'background-color: #2f308b');
     opcion.style.background = "#D52444";
     console.log("The answer is incorrect.");
   }
 
   else {
-    document.body.setAttribute('style', 'background-color: #00A653');
+    document.body.setAttribute('style', 'background-color: #2f308b');
     opcion.style.background = "#008747";
     console.log("The answer is correct.");
   }
