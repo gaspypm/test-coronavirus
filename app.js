@@ -12,16 +12,10 @@ const respuestas_span = [respuesta1, respuesta2, respuesta3];
 const nivel = document.getElementById("nivel");
 
 const id = localStorage.getItem("id");
-let numPregunta;
 let cantPreguntas;
 const categoria = (id).slice(0, -3);
 
 console.log("ID:", id);
-let preguntas = [];
-let respuestas = [];
-let opciones = [];
-let indicesRespuestas = [];
-let j = 0;
 
 switch (categoria){
   case "home":
@@ -219,7 +213,7 @@ async function main(){
     indicesRespuestas[i] = i*3;
   }
 
-  let preguntaAleatoria = aleatorizarPreguntas(cantPreguntas);
+  let preguntaAleatoria = localStorage.getItem("numPregunta") - 1;
   let indiceAleatorio = indicesRespuestas[0];
 
   indiceRespuestaCorrecta.innerHTML = indiceAleatorio;
