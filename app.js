@@ -54,7 +54,7 @@ document.getElementById("prevQuestion").addEventListener('click', function(){
     numeroPregunta.innerHTML = "Question " + (currentQuestion - 1).toString();
     main(); // Update the question content
   }
-  if (currentQuestion - 1 == 0) {
+  else if (currentQuestion - 1 == 0) {
     localStorage.setItem("numPregunta", cantPreguntas);
     numeroPregunta.innerHTML = "Question " + (cantPreguntas).toString();
     main(); // Update the question content
@@ -68,7 +68,7 @@ document.getElementById("nextQuestion").addEventListener('click', function(){
     numeroPregunta.innerHTML = "Question " + (currentQuestion + 1).toString();
     main(); // Update the question content
   }
-  if (currentQuestion == cantPreguntas) {
+  else if (currentQuestion == cantPreguntas) {
     localStorage.setItem("numPregunta",  1);
     numeroPregunta.innerHTML = "Question 1";
     main(); // Update the question content
