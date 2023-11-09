@@ -64,7 +64,7 @@ document.getElementById("nextQuestion").addEventListener('click', function(){
     main(); // Update the question content
   }
   else {
-    localStorage.setItem("numPregunta", 1);
+    localStorage.setItem("numPregunta", currentQuestion - cantPreguntas);
     numeroPregunta.innerHTML = "Question 1";
   }
 });
