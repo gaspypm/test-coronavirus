@@ -8,35 +8,9 @@ const respuesta2 = document.getElementById("respuesta2");
 const respuesta3 = document.getElementById("respuesta3");
 const indiceRespuestaCorrecta = document.getElementById("indiceRespuestaCorrecta");
 const respuestas_span = [respuesta1, respuesta2, respuesta3];
-const barraTiempo = document.getElementById("tiempoRestante");
 const dificultad = document.getElementById("dificultad");
 const nivel = document.getElementById("nivel");
 document.getElementById("logo").style.display = 'block';
-
-function calcularTiempoRestante(barraTiempo){
-    let width = 99;
-    let id = setInterval(tiempo, 1000);
-    function tiempo(){
-        if (width <= 0){ // Cuando el tiempo se termina
-            setTimeout(function(){
-                document.body.style.backgroundColor = '#F63E52'; // Cambio el fondo a rojo
-                document.body.setAttribute('style', 'background-color: #F63E52 !important');
-                document.getElementById("fuente").style.display = 'block';
-                document.getElementById("fuente").style.opacity = '1';
-                mostrarOpciones(respuesta1, respuesta2, respuesta3);
-                seleccionada = true;
-            });
-            clearInterval(id);
-        }
-        else if (seleccionada == true){
-            clearInterval(id);
-        }
-        else {
-            width = width - 1.65;
-            tiempoRestante.style.width = width.toFixed(2) + "%";
-        }
-    }
-}
 
 async function obtenerArchivo(id){
   const archivo = await fetch("/questions/" + id.toString() + ".csv"); // Recibo el archivo con las preguntas y respuestas
@@ -252,8 +226,6 @@ async function main(){
     verificarCorrecta(respuesta3, respuestas[indicesRespuestas[preguntaAleatoria]], respuesta1, respuesta2, respuesta3);
     seleccionada = true;
   })
-
-  calcularTiempoRestante(barraTiempo);
 
 }
 
