@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Calistoga&display=swap');
+@import url("https://use.typekit.net/exr0fge.css");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #2f308b;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background: #2f308b;
+  background-image: #2f308b;
+  transition: background-color 1s;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#id {
+  display: none;
+}
+
+#dificultad {
+  margin: 2%;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: none;
+}
+
+#nivel {
+  margin: 2%;
+  font-family: "etna", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 400%;
+  text-shadow: 0px 0px 14px #00000040;
+  color: white;
+}
+
+.seleccionar {
+  margin: 2%;
+  text-align: center;
+  color: white;
+  font-size: 500%;
+  font-family: Asap, sans-serif;
+  font-weight: bold;
+  text-shadow: 0px 0px 14px #00000040;
+}
+
+#home, #pharmacy, #hospital, #supermarket, #school, #bank, #lab, #zoo {
+  margin: 2%;
+  border: 3px solid white;
+  border-radius: 4px;
+  text-align: center;
+  width: auto;
+  padding: 20px;
+  color: white;
+  font-size: 500%;
+  font-family: Asap, sans-serif;
+  display: block;
+  text-shadow: 0px 0px 14px #00000040;
+}
+
+#home:hover, #pharmacy:hover, #hospital:hover, #supermarket:hover, #school:hover, #bank:hover, #lab:hover, #zoo:hover {
+  cursor: pointer;
+  background: #140069;
+}
+
+header {
+  padding: 20px;
+}
+
+header > h1 {
+  color: #25272E;
+  text-align: center;
+  font-family: Asap, sans-serif;
+}
+
+#tiempoRestante {
+  width: 100%;
+  height: 30px;
+  background-color: white;
+  top: 0px;
+  position: sticky;
+  display: block;
+  transition: all 1s linear;
+}
+
+.pregunta {
+  margin: 2%;
+  margin-top: 0%;
+  text-align: center;
+  color: white;
+  font-size: 500%;
+  font-family: Asap, sans-serif;
+  font-weight: bold;
+  text-shadow: 0px 0px 14px #00000040;
+}
+
+#respuesta1:hover, #respuesta2:hover, #respuesta3:hover {
+  cursor: pointer;
+  background: #140069;
+}
+
+#respuesta1, #respuesta2, #respuesta3 {
+  margin: 2%;
+  text-align: center;
+  width: auto;
+  color: white;
+  font-size: 500%;
+  font-family: Asap, sans-serif;
+  transition: hover 0.3s ease;
+  transition: background 1s;
+  padding: 20px;
+  border: 3px solid white;
+  border-radius: 4px;
+  display: none;
+  text-shadow: 0px 0px 14px #00000040;
+}
+
+#indiceRespuestaCorrecta {
+  display: none;
+}
+
+.tiempo {
+  text-align: center;
+  color: white;
+  font-family: Asap, sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+img {
+  width: 150px;
+  padding-bottom: 1%;
+}
+
+@media screen and (max-width: 1200px) {
+    _::-webkit-full-page-media, _:future, :root .logo_fuente {
+        padding-bottom: 200px;
+    }
+}
+
+.logo_fuente {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  overflow: auto;
+  margin-top: auto;
+}
+
+#logo {
+  display: none;
+}
+
+#fuente {
+  width: 100%;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+#space {
+  width: 150px;
+}
