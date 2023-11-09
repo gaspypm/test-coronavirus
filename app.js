@@ -10,7 +10,7 @@ const respuesta3 = document.getElementById("respuesta3");
 const indiceRespuestaCorrecta = document.getElementById("indiceRespuestaCorrecta");
 const respuestas_span = [respuesta1, respuesta2, respuesta3];
 const nivel = document.getElementById("nivel");
-
+localStorage.setItem("numPregunta", 1);
 const id = localStorage.getItem("id");
 let cantPreguntas;
 const categoria = (id).slice(0, -3);
