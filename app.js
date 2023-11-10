@@ -2,7 +2,6 @@ let correcta = false;
 let seleccionada = false;
 let dificultades = [];
 const body = document.getElementById("body");
-const numeroPregunta = document.getElementById("numeroPregunta");
 const pregunta = document.getElementById("pregunta");
 const respuesta1 = document.getElementById("respuesta1");
 const respuesta2 = document.getElementById("respuesta2");
@@ -59,13 +58,11 @@ document.getElementById("prevQuestion").addEventListener('click', function(){
   let currentQuestion = parseInt(localStorage.getItem("numPregunta"));
   if (currentQuestion > 1) {
     localStorage.setItem("numPregunta", currentQuestion - 1);
-    numeroPregunta.innerHTML = "Question " + (currentQuestion - 1).toString();
     selectQuestion.value = (currentQuestion - 1).toString();
     main();
   }
   else if (currentQuestion - 1 == 0) {
     localStorage.setItem("numPregunta", cantPreguntas);
-    numeroPregunta.innerHTML = "Question " + (cantPreguntas).toString();
     selectQuestion.value = (cantPreguntas).toString();
     main();
   }
@@ -75,13 +72,11 @@ document.getElementById("nextQuestion").addEventListener('click', function(){
   let currentQuestion = parseInt(localStorage.getItem("numPregunta"));
   if (currentQuestion < cantPreguntas) {
     localStorage.setItem("numPregunta", currentQuestion + 1);
-    numeroPregunta.innerHTML = "Question " + (currentQuestion + 1).toString();
     selectQuestion.value = (currentQuestion + 1).toString();
     main();
   }
   else if (currentQuestion == cantPreguntas) {
     localStorage.setItem("numPregunta",  1);
-    numeroPregunta.innerHTML = "Question 1";
     selectQuestion.value = 1;
     main();
   }
@@ -193,7 +188,6 @@ function populateQuestionDropdown(cantPreguntas) {
   selectQuestion.addEventListener("change", function() {
     const selectedQuestion = this.value;
     localStorage.setItem("numPregunta", selectedQuestion);
-    numeroPregunta.innerHTML = "Question " + selectedQuestion;
     main();
   });
 }
@@ -215,13 +209,11 @@ async function main(){
   populateQuestionDropdown(cantPreguntas);
 
   selectQuestion.value = localStorage.getItem("numPregunta");
-  numeroPregunta.innerHTML = "Question " + selectQuestion.value;
 
   let preguntaAleatoria = localStorage.getItem("numPregunta") - 1;
   let indiceAleatorio = indicesRespuestas[0];
 
   indiceRespuestaCorrecta.innerHTML = indiceAleatorio;
-  numeroPregunta.innerHTML = "Question " + (preguntaAleatoria+1).toString();
   localStorage.setItem("numPregunta", preguntaAleatoria+1);
   console.log("Question number:", preguntaAleatoria+1);
 
@@ -259,6 +251,8 @@ async function main(){
     respuestas_span[k].style.display = 'block';
     respuestas_span[k].innerHTML = opciones[k];
   }
+
+  // verificarCorrecta(respuesta1, respuestas[indicesRespuestas[preguntaAleatoria]], respuesta1, respuesta2, respuesta3);
 
   respuesta1.addEventListener('click', function(){
     verificarCorrecta(respuesta1, respuestas[indicesRespuestas[preguntaAleatoria]], respuesta1, respuesta2, respuesta3);
