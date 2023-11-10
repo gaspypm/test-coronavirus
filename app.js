@@ -183,7 +183,6 @@ function mostrarOpciones(respuesta1, respuesta2, respuesta3){
 }
 
 function populateQuestionDropdown(cantPreguntas) {
-  selectQuestion.innerHTML = '';
   for (let i = 1; i <= cantPreguntas; i++) {
     const option = document.createElement("option");
     option.text = "Question " + i;
@@ -201,6 +200,7 @@ function populateQuestionDropdown(cantPreguntas) {
 }
 
 async function main(){
+  selectQuestion.innerHTML = '';
   const id = localStorage.getItem("id");
   let numPregunta;
   let cantPreguntas;
