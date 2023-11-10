@@ -227,9 +227,6 @@ async function main(){
   numeroPregunta.innerHTML = "Question " + (preguntaAleatoria+1).toString();
   localStorage.setItem("numPregunta", preguntaAleatoria+1);
   console.log("Question number:", preguntaAleatoria+1);
-  respuestas_span[0].style.display = 'none';
-  respuestas_span[1].style.display = 'none';
-  respuestas_span[2].style.display = 'none';
 
   preguntas = obtenerPreguntas(await obtenerArchivo(id));
   respuestas = obtenerRespuestas(await obtenerArchivo(id));
