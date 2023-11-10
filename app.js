@@ -48,6 +48,13 @@ switch (categoria){
 }
 document.getElementById("logo").style.display = 'block';
 
+for (let i = 1; i <= cantPreguntas; i++) {
+  const option = document.createElement("option");
+  option.text = "Question " + i;
+  option.value = i;
+  selectQuestion.add(option);
+}
+
 document.getElementById("prevQuestion").addEventListener('click', function(){
   let currentQuestion = parseInt(localStorage.getItem("numPregunta"));
   if (currentQuestion > 1) {
@@ -183,25 +190,15 @@ function mostrarOpciones(respuesta1, respuesta2, respuesta3){
 }
 
 function populateQuestionDropdown(cantPreguntas) {
-  for (let i = 1; i <= cantPreguntas; i++) {
-    const option = document.createElement("option");
-    option.text = "Question " + i;
-    option.value = i;
-    selectQuestion.add(option);
-  }
-
   selectQuestion.addEventListener("change", function() {
-    const selectedQuestion = localStorage.getItem("numPregunta");
+    const selectedQuestion = this.value;
     localStorage.setItem("numPregunta", selectedQuestion);
-    selectQuestion.value = localStorage.getItem("numPregunta");
-    console.log("Question number option:", selectedQuestion);
     numeroPregunta.innerHTML = "Question " + selectedQuestion;
     main();
   });
 }
 
 async function main(){
-  selectQuestion.innerHTML = '';
   const id = localStorage.getItem("id");
   let numPregunta;
   let cantPreguntas;
@@ -214,40 +211,15 @@ async function main(){
   let indicesRespuestas = [];
   let j = 0;
 
-  switch (categoria){
-    case "home":
-      cantPreguntas = 33;
-      break;
-    case "pharmacy":
-      cantPreguntas = 29;
-      break;
-    case "hospital":
-      cantPreguntas = 34;
-      break;
-    case "supermarket":
-      cantPreguntas = 34;
-      break;
-    case "school":
-      cantPreguntas = 34;
-      break;
-    case "bank":
-      cantPreguntas = 30;
-      break;
-    case "lab":
-      cantPreguntas = 34;
-      break;
-    case "zoo":
-      cantPreguntas = 29;
-      break;
-    default:
-      alert("There was an error, try selecting the category again.")
-  }
-
   for(let i = 0; i < cantPreguntas; i++){
     indicesRespuestas[i] = i*3;
   }
 
   populateQuestionDropdown(cantPreguntas);
+
+  selectQuestion.value = localStorage.getItem("numPregunta");
+  console.log("Question number option:", selectedQuestion);
+  numeroPregunta.innerHTML = "Question " + selectedQuestion;
 
   let preguntaAleatoria = localStorage.getItem("numPregunta") - 1;
   let indiceAleatorio = indicesRespuestas[0];
