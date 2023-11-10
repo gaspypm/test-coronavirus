@@ -193,7 +193,7 @@ function populateQuestionDropdown(cantPreguntas) {
   selectQuestion.addEventListener("change", function() {
     const selectedQuestion = localStorage.getItem("numPregunta");
     localStorage.setItem("numPregunta", selectedQuestion);
-    selectQuestion.value = localStorage.getItem("numPregunta");
+    selectQuestion.value = (int)(localStorage.getItem("numPregunta"));
     numeroPregunta.innerHTML = "Question " + selectedQuestion;
     main();
   });
