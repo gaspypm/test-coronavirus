@@ -200,9 +200,6 @@ function populateQuestionDropdown(cantPreguntas) {
 
 async function main(){
   const id = localStorage.getItem("id");
-  let numPregunta;
-  let cantPreguntas;
-  const categoria = (id).slice(0, -3);
 
   console.log("ID:", id);
   let preguntas = [];
