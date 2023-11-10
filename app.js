@@ -218,8 +218,7 @@ async function main(){
   populateQuestionDropdown(cantPreguntas);
 
   selectQuestion.value = localStorage.getItem("numPregunta");
-  console.log("Question number option:", selectedQuestion);
-  numeroPregunta.innerHTML = "Question " + selectedQuestion;
+  numeroPregunta.innerHTML = "Question " + selectQuestion.value;
 
   let preguntaAleatoria = localStorage.getItem("numPregunta") - 1;
   let indiceAleatorio = indicesRespuestas[0];
