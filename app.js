@@ -133,19 +133,19 @@ function aleatorizarRespuestas(opciones){
   return opciones;
 }
 
-function verificarCorrecta(opcion, correcta, respuesta1, respuesta2, respuesta3){
+function verificarCorrecta(respuesta, correcta, respuesta1, respuesta2, respuesta3){
   if(seleccionada == true){
     return;
   }
-  if(opcion.innerHTML != correcta){
+  if(respuesta.innerHTML != correcta){
     document.body.setAttribute('style', 'background-color: #2f308b');
-    opcion.style.background = "#D52444";
+    respuesta.style.background = "#D52444";
     console.log("The answer is incorrect.");
   }
 
   else {
     document.body.setAttribute('style', 'background-color: #2f308b');
-    opcion.style.background = "#008747";
+    respuesta.style.background = "#008747";
     console.log("The answer is correct.");
   }
 
@@ -154,6 +154,7 @@ function verificarCorrecta(opcion, correcta, respuesta1, respuesta2, respuesta3)
     document.getElementById("fuente").style.display = 'block';
     document.getElementById("fuente").style.opacity = '1';
   }, 1000);
+  seleccionada = true;
 }
 
 function mostrarOpciones(respuesta1, respuesta2, respuesta3){
@@ -241,23 +242,9 @@ async function main(){
     respuestas_span[k].innerHTML = opciones[k];
   }
 
-  // verificarCorrecta(respuesta1, respuestas[indicesRespuestas[preguntaAleatoria]], respuesta1, respuesta2, respuesta3);
-
-  respuesta1.addEventListener('click', function(){
-    verificarCorrecta(respuesta1, respuestas[indicesRespuestas[preguntaAleatoria]], respuesta1, respuesta2, respuesta3);
-    seleccionada = true;
-  })
-
-  respuesta2.addEventListener('click', function(){
-    verificarCorrecta(respuesta2, respuestas[indicesRespuestas[preguntaAleatoria]], respuesta1, respuesta2, respuesta3);
-    seleccionada = true;
-  })
-
-  respuesta3.addEventListener('click', function(){
-    verificarCorrecta(respuesta3, respuestas[indicesRespuestas[preguntaAleatoria]], respuesta1, respuesta2, respuesta3);
-    seleccionada = true;
-  })
-
+  verificarCorrecta(respuesta1, respuestas[indicesRespuestas[preguntaAleatoria]], respuesta1, respuesta2, respuesta3);
+  verificarCorrecta(respuesta2, respuestas[indicesRespuestas[preguntaAleatoria]], respuesta1, respuesta2, respuesta3);
+  verificarCorrecta(respuesta3, respuestas[indicesRespuestas[preguntaAleatoria]], respuesta1, respuesta2, respuesta3);
 }
 
 document.addEventListener("DOMContentLoaded", function(event){
