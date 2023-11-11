@@ -1,4 +1,3 @@
-import seedrandom from 'seedrandom';
 let correcta = false;
 let seleccionada = false;
 let dificultades = [];
