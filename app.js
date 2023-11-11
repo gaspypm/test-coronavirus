@@ -179,6 +179,7 @@ function mostrarOpciones(respuesta1, respuesta2, respuesta3){
 selectQuestion.addEventListener("change", function() {
     const selectedQuestion = this.value;
     localStorage.setItem("numPregunta", selectedQuestion);
+    main();
   });
 
 async function main(){
