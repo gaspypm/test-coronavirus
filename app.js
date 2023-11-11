@@ -60,11 +60,13 @@ document.getElementById("prevQuestion").addEventListener('click', function(){
   if (currentQuestion > 1) {
     localStorage.setItem("numPregunta", currentQuestion - 1);
     selectQuestion.value = (currentQuestion - 1).toString();
+    selectQuestion.dataset.manualChange = true;
     main();
   }
   else if (currentQuestion - 1 == 0) {
     localStorage.setItem("numPregunta", cantPreguntas);
     selectQuestion.value = (cantPreguntas).toString();
+    selectQuestion.dataset.manualChange = true;
     main();
   }
 });
@@ -74,11 +76,13 @@ document.getElementById("nextQuestion").addEventListener('click', function(){
   if (currentQuestion < cantPreguntas) {
     localStorage.setItem("numPregunta", currentQuestion + 1);
     selectQuestion.value = (currentQuestion + 1).toString();
+    selectQuestion.dataset.manualChange = true;
     main();
   }
   else if (currentQuestion == cantPreguntas) {
     localStorage.setItem("numPregunta",  1);
     selectQuestion.value = 1;
+    selectQuestion.dataset.manualChange = true;
     main();
   }
 });
@@ -181,7 +185,11 @@ function populateQuestionDropdown(cantPreguntas) {
   selectQuestion.addEventListener("change", function() {
     const selectedQuestion = this.value;
     localStorage.setItem("numPregunta", selectedQuestion);
-    main();
+    console.log("Dropdown menu changed to question:", selectedQuestion);
+    if (!selectQuestion.dataset.manualChange) {
+      main();
+    }
+    selectQuestion.dataset.manualChange = false;
   });
 }
 
