@@ -186,6 +186,7 @@ function populateQuestionDropdown(cantPreguntas) {
 }
 
 async function main(){
+  console.log("Entering main function");
   const id = localStorage.getItem("id");
 
   console.log("ID:", id);
