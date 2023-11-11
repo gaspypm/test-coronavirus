@@ -1,3 +1,4 @@
+import seedrandom from 'seedrandom';
 let correcta = false;
 let seleccionada = false;
 let dificultades = [];
@@ -14,6 +15,7 @@ localStorage.setItem("numPregunta", 1);
 const id = localStorage.getItem("id");
 let cantPreguntas;
 const categoria = (id).slice(0, -3);
+
 
 console.log("ID:", id);
 
@@ -121,21 +123,13 @@ function obtenerRespuestas(tabla){
   return respuestas;
 }
 
-function aleatorizarPreguntas(cantPreguntas){
-  return 0;
-}
-
 function aleatorizarRespuestas(opciones){
-  let indiceActual = opciones.length, indiceAleatorio;
+  let seed = 42;
+  Math.seedrandom(seed);
 
-  // Mientras haya elementos para aleatorizar
-  while (0 !== indiceActual){
-    // Elegir elemento restante
-    indiceAleatorio = Math.floor(Math.random() * indiceActual);
-    indiceActual--;
-
-    // Intercambiar ese elemento por un elemento existente
-    [opciones[indiceActual], opciones[indiceAleatorio]] = [opciones[indiceAleatorio], opciones[indiceActual]];
+  for (let i = opciones.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [opciones[i], opciones[j]] = [opciones[j], opciones[i]];
   }
 
   return opciones;
