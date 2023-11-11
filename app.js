@@ -83,7 +83,6 @@ document.getElementById("nextQuestion").addEventListener('click', function(){
   }
 });
 
-
 async function obtenerArchivo(id){
   const archivo = await fetch("/questions/" + id.toString() + ".csv"); // Recibo el archivo con las preguntas y respuestas
   const datos = await archivo.text(); // Convierto el archivo a texto
@@ -177,13 +176,10 @@ function mostrarOpciones(respuesta1, respuesta2, respuesta3){
   }
 }
 
-function populateQuestionDropdown(cantPreguntas) {
-  selectQuestion.addEventListener("change", function() {
+selectQuestion.addEventListener("change", function() {
     const selectedQuestion = this.value;
     localStorage.setItem("numPregunta", selectedQuestion);
-    main();
   });
-}
 
 async function main(){
   console.log("Entering main function");
@@ -199,8 +195,6 @@ async function main(){
   for(let i = 0; i < cantPreguntas; i++){
     indicesRespuestas[i] = i*3;
   }
-
-  populateQuestionDropdown(cantPreguntas);
 
   selectQuestion.value = localStorage.getItem("numPregunta");
 
