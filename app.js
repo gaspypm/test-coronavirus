@@ -83,6 +83,12 @@ document.getElementById("nextQuestion").addEventListener('click', function(){
   }
 });
 
+selectQuestion.addEventListener("change", function() {
+  const selectedQuestion = this.value;
+  localStorage.setItem("numPregunta", selectedQuestion);
+  main();
+});
+
 async function obtenerArchivo(id){
   const archivo = await fetch("/questions/" + id.toString() + ".csv"); // Recibo el archivo con las preguntas y respuestas
   const datos = await archivo.text(); // Convierto el archivo a texto
@@ -96,6 +102,7 @@ function obtenerPreguntas(tabla){
   tabla.forEach(columna => {
     const fila = columna.split(";"); // Separo las preguntas de las respuestas
     const pregunta = fila[0];
+    // const dificultad = fila[1];    // Agrego dificultad a la pregunta
     preguntas.push(pregunta.slice(0, -1)); // Agrego al array 'preguntas' cada pregunta
     dificultades.push(pregunta.slice(-1));
   });
@@ -103,6 +110,22 @@ function obtenerPreguntas(tabla){
 
   return preguntas; // Retorno el array modificado
 }
+
+/*
+
+function obtenerDificultad(tabla){
+  let dificultades = [];
+
+  tabla.forEach(columna => {
+    const fila = columna.split(";"); // Separo preguntas, dificultades y respuestas
+    const dificultad = fila[1];    
+    dificultades.push(pregunta.slice(-1));
+  });
+
+  return dificultades;
+}
+
+*/
 
 function obtenerRespuestas(tabla){
   let respuestas = [];
@@ -154,7 +177,7 @@ function verificarCorrecta(respuesta, correcta, respuesta1, respuesta2, respuest
     document.getElementById("fuente").style.display = 'block';
     document.getElementById("fuente").style.opacity = '1';
   }, 1000);
-  seleccionada = true;
+  return true;
 }
 
 function mostrarOpciones(respuesta1, respuesta2, respuesta3){
@@ -176,12 +199,6 @@ function mostrarOpciones(respuesta1, respuesta2, respuesta3){
     respuesta3.style.background = "#D52444";
   }
 }
-
-selectQuestion.addEventListener("change", function() {
-    const selectedQuestion = this.value;
-    localStorage.setItem("numPregunta", selectedQuestion);
-    main();
-  });
 
 async function main(){
   console.log("Entering main function");
@@ -242,9 +259,11 @@ async function main(){
     respuestas_span[k].innerHTML = opciones[k];
   }
 
-  verificarCorrecta(respuesta1, respuestas[indicesRespuestas[preguntaAleatoria]], respuesta1, respuesta2, respuesta3);
-  verificarCorrecta(respuesta2, respuestas[indicesRespuestas[preguntaAleatoria]], respuesta1, respuesta2, respuesta3);
-  verificarCorrecta(respuesta3, respuestas[indicesRespuestas[preguntaAleatoria]], respuesta1, respuesta2, respuesta3);
+  if(verificarCorrecta(respuesta1, respuestas[indicesRespuestas[preguntaAleatoria]], respuesta1, respuesta2, respuesta3) == true){
+    verificarCorrecta(respuesta1, respuestas[indicesRespuestas[preguntaAleatoria]], respuesta1, respuesta2, respuesta3);
+    verificarCorrecta(respuesta2, respuestas[indicesRespuestas[preguntaAleatoria]], respuesta1, respuesta2, respuesta3);
+    verificarCorrecta(respuesta3, respuestas[indicesRespuestas[preguntaAleatoria]], respuesta1, respuesta2, respuesta3);
+  }
 }
 
 document.addEventListener("DOMContentLoaded", function(event){
