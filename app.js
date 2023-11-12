@@ -175,7 +175,7 @@ function verificarCorrecta(respuesta, correcta, respuesta1, respuesta2, respuest
   setTimeout(function(){ // Después de 1 segundo de elegir muestro si las otras opciones son correctas o no
     mostrarOpciones(respuesta1, respuesta2, respuesta3);
   }, 1000);
-  return true;
+  seleccionada = true;
 }
 
 function mostrarOpciones(respuesta1, respuesta2, respuesta3){
@@ -257,11 +257,10 @@ async function main(){
     respuestas_span[k].innerHTML = opciones[k];
   }
 
-  if(verificarCorrecta(respuesta1, respuestas[indicesRespuestas[preguntaAleatoria]], respuesta1, respuesta2, respuesta3) == true){
-    verificarCorrecta(respuesta1, respuestas[indicesRespuestas[preguntaAleatoria]], respuesta1, respuesta2, respuesta3);
-    verificarCorrecta(respuesta2, respuestas[indicesRespuestas[preguntaAleatoria]], respuesta1, respuesta2, respuesta3);
-    verificarCorrecta(respuesta3, respuestas[indicesRespuestas[preguntaAleatoria]], respuesta1, respuesta2, respuesta3);
-  }
+
+  verificarCorrecta(respuesta1, respuestas[indicesRespuestas[preguntaAleatoria]], respuesta1, respuesta2, respuesta3);
+  verificarCorrecta(respuesta2, respuestas[indicesRespuestas[preguntaAleatoria]], respuesta1, respuesta2, respuesta3);
+  verificarCorrecta(respuesta3, respuestas[indicesRespuestas[preguntaAleatoria]], respuesta1, respuesta2, respuesta3);
 }
 
 document.addEventListener("DOMContentLoaded", function(event){
