@@ -151,8 +151,6 @@ function mostrarOpciones(respuesta1, respuesta2, respuesta3){
     for(let i = 0; i < cantPreguntas; i++){
       indicesRespuestas[i] = i*3;
     }
-    
-    populateQuestionDropdown(cantPreguntas);
 
     selectQuestion.value = localStorage.getItem("numPregunta");
 
