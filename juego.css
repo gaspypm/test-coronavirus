@@ -68,7 +68,7 @@ body {
 
 #prevQuestion, #nextQuestion {
   margin: 2px;
-  width: 50px;
+  width: 100px;
   color: white;
   font-family: Asap, sans-serif;
   transition: hover 0.3s ease;

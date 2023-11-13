@@ -171,10 +171,7 @@ function verificarCorrecta(respuesta, correcta, respuesta1, respuesta2, respuest
     respuesta.style.background = "#008747";
     console.log("The answer is correct.");
   }
-
-  setTimeout(function(){ // Después de 1 segundo de elegir muestro si las otras opciones son correctas o no
-    mostrarOpciones(respuesta1, respuesta2, respuesta3);
-  }, 1000);
+  mostrarOpciones(respuesta1, respuesta2, respuesta3);
   seleccionada = true;
 }
 
