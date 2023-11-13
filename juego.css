@@ -56,7 +56,7 @@ body {
 #selectQuestion {
   width: auto;
   color: white;
-  font-size: 200%;
+  font-size: 400%;
   font-family: Asap, sans-serif;
   font-weight: bold;
   padding: 2.5px;
@@ -68,7 +68,7 @@ body {
 
 #prevQuestion, #nextQuestion {
   margin: 2px;
-  width: 100px;
+  width: 150px;
   color: white;
   font-family: Asap, sans-serif;
   transition: hover 0.3s ease;
