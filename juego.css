@@ -38,7 +38,7 @@ body {
 }
 
 #questionControl {
-  text-align: left;
+  text-align: right;
   align-items: center;
   display: flex;
 }
