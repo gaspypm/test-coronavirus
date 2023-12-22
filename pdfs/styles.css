@@ -21,12 +21,15 @@ body {
 }
 
 .pdf img {
-    pointer-events: none;
-    width: 100%;
+  pointer-events: none;
+  width: 100%;
 }
 
 @media print {
+
   html,
   body {
     display: none;
   }
+
+}
