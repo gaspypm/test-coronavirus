@@ -219,7 +219,7 @@ async function main() {
   let preguntaAleatoria = localStorage.getItem("numPregunta") - 1;
   let indiceAleatorio = indicesRespuestas[0];
 
-  pdf.href = "/coronavirus/pdfs/" + (id).slice(0, -3) + "/" + (preguntaAleatoria + 1).toString(); // Redirijo a página de fuente
+  pdf.href = "/coronavirus/pdfs/" + (id).slice(0, -3) + "/" + (preguntaAleatoria + 1).toString() + ".pdf"; // Redirijo a página de fuente
 
   indiceRespuestaCorrecta.innerHTML = indiceAleatorio;
   localStorage.setItem("numPregunta", preguntaAleatoria + 1);
