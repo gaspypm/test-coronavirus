@@ -218,7 +218,7 @@ img {
 
 #fuente {
   width: 100%;
-  display: none;
+  display: block;
   opacity: 0;
   transition: opacity 0.3s;
 }
