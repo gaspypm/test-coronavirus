@@ -15,10 +15,13 @@ const id = localStorage.getItem("id");
 let cantPreguntas;
 const categoria = (id).slice(0, -3);
 
+document.getElementById("fuente").style.display = 'block';
+document.getElementById("fuente").style.opacity = '1';
+
 
 console.log("ID:", id);
 
-switch (categoria){
+switch (categoria) {
   case "home":
     cantPreguntas = 33;
     break;
@@ -55,7 +58,7 @@ for (let i = 1; i <= cantPreguntas; i++) {
   selectQuestion.add(option);
 }
 
-document.getElementById("prevQuestion").addEventListener('click', function(){
+document.getElementById("prevQuestion").addEventListener('click', function () {
   let currentQuestion = parseInt(localStorage.getItem("numPregunta"));
   if (currentQuestion > 1) {
     localStorage.setItem("numPregunta", currentQuestion - 1);
@@ -69,7 +72,7 @@ document.getElementById("prevQuestion").addEventListener('click', function(){
   }
 });
 
-document.getElementById("nextQuestion").addEventListener('click', function(){
+document.getElementById("nextQuestion").addEventListener('click', function () {
   let currentQuestion = parseInt(localStorage.getItem("numPregunta"));
   if (currentQuestion < cantPreguntas) {
     localStorage.setItem("numPregunta", currentQuestion + 1);
@@ -77,26 +80,26 @@ document.getElementById("nextQuestion").addEventListener('click', function(){
     main();
   }
   else if (currentQuestion == cantPreguntas) {
-    localStorage.setItem("numPregunta",  1);
+    localStorage.setItem("numPregunta", 1);
     selectQuestion.value = 1;
     main();
   }
 });
 
-selectQuestion.addEventListener("change", function() {
+selectQuestion.addEventListener("change", function () {
   const selectedQuestion = this.value;
   localStorage.setItem("numPregunta", selectedQuestion);
   main();
 });
 
-async function obtenerArchivo(id){
+async function obtenerArchivo(id) {
   const archivo = await fetch("/questions/" + id.toString() + ".csv"); // Recibo el archivo con las preguntas y respuestas
   const datos = await archivo.text(); // Convierto el archivo a texto
   const tabla = datos.split("\n"); // Separo las preguntas
   return Promise.resolve(tabla);
 }
 
-function obtenerPreguntas(tabla){
+function obtenerPreguntas(tabla) {
   let preguntas = [];
 
   tabla.forEach(columna => {
@@ -127,14 +130,14 @@ function obtenerDificultad(tabla){
 
 */
 
-function obtenerRespuestas(tabla){
+function obtenerRespuestas(tabla) {
   let respuestas = [];
 
   tabla.forEach(columna => {
     const fila = columna.split(";"); // Separo las preguntas de las respuestas
 
-    for(let i = 1; i < 5; i++){ // Separo las respuestas
-      if(fila[i] != undefined){
+    for (let i = 1; i < 5; i++) { // Separo las respuestas
+      if (fila[i] != undefined) {
         const respuesta = fila[i];
         respuestas.push(respuesta);
       }
@@ -144,7 +147,7 @@ function obtenerRespuestas(tabla){
   return respuestas;
 }
 
-function aleatorizarRespuestas(opciones){
+function aleatorizarRespuestas(opciones) {
   let seed = 42;
   Math.seedrandom(seed);
 
@@ -156,11 +159,11 @@ function aleatorizarRespuestas(opciones){
   return opciones;
 }
 
-function verificarCorrecta(respuesta, correcta, respuesta1, respuesta2, respuesta3){
-  if(seleccionada == true){
+function verificarCorrecta(respuesta, correcta, respuesta1, respuesta2, respuesta3) {
+  if (seleccionada == true) {
     return;
   }
-  if(respuesta.innerHTML != correcta){
+  if (respuesta.innerHTML != correcta) {
     document.body.setAttribute('style', 'background-color: #2f308b');
     respuesta.style.background = "#D52444";
     console.log("The answer is incorrect.");
@@ -175,27 +178,27 @@ function verificarCorrecta(respuesta, correcta, respuesta1, respuesta2, respuest
   seleccionada = true;
 }
 
-function mostrarOpciones(respuesta1, respuesta2, respuesta3){
-  if(respuesta1.innerHTML == correcta){
+function mostrarOpciones(respuesta1, respuesta2, respuesta3) {
+  if (respuesta1.innerHTML == correcta) {
     respuesta1.style.background = "#008747";
     respuesta2.style.background = "#D52444";
     respuesta3.style.background = "#D52444";
-  } else if(respuesta2.innerHTML == correcta){
+  } else if (respuesta2.innerHTML == correcta) {
     respuesta1.style.background = "#D52444";
     respuesta2.style.background = "#008747";
     respuesta3.style.background = "#D52444";
-  } else if(respuesta3.innerHTML == correcta){
+  } else if (respuesta3.innerHTML == correcta) {
     respuesta1.style.background = "#D52444";
     respuesta2.style.background = "#D52444";
     respuesta3.style.background = "#008747";
-  } else{
+  } else {
     respuesta1.style.background = "#D52444";
     respuesta2.style.background = "#D52444";
     respuesta3.style.background = "#D52444";
   }
 }
 
-async function main(){
+async function main() {
   console.log("Entering main function");
   const id = localStorage.getItem("id");
 
@@ -206,8 +209,8 @@ async function main(){
   let indicesRespuestas = [];
   let j = 0;
 
-  for(let i = 0; i < cantPreguntas; i++){
-    indicesRespuestas[i] = i*3;
+  for (let i = 0; i < cantPreguntas; i++) {
+    indicesRespuestas[i] = i * 3;
   }
 
   selectQuestion.value = localStorage.getItem("numPregunta");
@@ -216,8 +219,8 @@ async function main(){
   let indiceAleatorio = indicesRespuestas[0];
 
   indiceRespuestaCorrecta.innerHTML = indiceAleatorio;
-  localStorage.setItem("numPregunta", preguntaAleatoria+1);
-  console.log("Question number:", preguntaAleatoria+1);
+  localStorage.setItem("numPregunta", preguntaAleatoria + 1);
+  console.log("Question number:", preguntaAleatoria + 1);
 
   preguntas = obtenerPreguntas(await obtenerArchivo(id));
   respuestas = obtenerRespuestas(await obtenerArchivo(id));
@@ -226,8 +229,8 @@ async function main(){
 
   correcta = respuestas[indicesRespuestas[preguntaAleatoria]];
 
-  for (let i = indicesRespuestas[preguntaAleatoria]; i < 105; i++){
-    if (respuestas[i].includes("\r")){
+  for (let i = indicesRespuestas[preguntaAleatoria]; i < 105; i++) {
+    if (respuestas[i].includes("\r")) {
       respuestas_span[j].innerHTML = respuestas[i];
       opciones[j] = respuestas[i];
       break;
@@ -240,16 +243,16 @@ async function main(){
 
   opciones = aleatorizarRespuestas(opciones);
 
-  if (dificultades[preguntaAleatoria] >= 1 && dificultades[preguntaAleatoria] <= 3){
-      nivel.innerHTML = "Level " + (dificultades[preguntaAleatoria]).toString();
-      console.log("Level:", dificultades[preguntaAleatoria]);
+  if (dificultades[preguntaAleatoria] >= 1 && dificultades[preguntaAleatoria] <= 3) {
+    nivel.innerHTML = "Level " + (dificultades[preguntaAleatoria]).toString();
+    console.log("Level:", dificultades[preguntaAleatoria]);
   }
-  else{
-      nivel.innerHTML = "Level 2";
-      console.log("ERROR: Level not found for question " + preguntaAleatoria.toString());
+  else {
+    nivel.innerHTML = "Level 2";
+    console.log("ERROR: Level not found for question " + preguntaAleatoria.toString());
   }
 
-  for (let k = 0; k < opciones.length; k++){
+  for (let k = 0; k < opciones.length; k++) {
     respuestas_span[k].style.display = 'block';
     respuestas_span[k].innerHTML = opciones[k];
   }
@@ -260,6 +263,6 @@ async function main(){
   verificarCorrecta(respuesta3, respuestas[indicesRespuestas[preguntaAleatoria]], respuesta1, respuesta2, respuesta3);
 }
 
-document.addEventListener("DOMContentLoaded", function(event){
+document.addEventListener("DOMContentLoaded", function (event) {
   main();
 });
