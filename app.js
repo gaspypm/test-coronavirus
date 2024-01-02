@@ -36,7 +36,7 @@ switch (categoria) {
     cantPreguntas = 34;
     break;
   case "school":
-    cantPreguntas = 34;
+    cantPreguntas = 33;
     break;
   case "bank":
     cantPreguntas = 30;
